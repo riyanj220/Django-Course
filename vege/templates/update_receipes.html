@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block start %}
+    <style>
+        .container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                font-size: 20px;
+            }
+
+            .form-control {
+                font-size: 16px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+            .form-heading {
+                text-align: center;
+            }
+
+            .centered-btn {
+            text-align: center; 
+        }
+    </style>
+
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="form-heading">Update Receipe</h1>
+        <div class="form-group">
+            <label for="recipeName" class="form-label">Old Recipe Name:</label>
+            <input name="receipe_name" required  type="text" id="recipeName" class="form-control" placeholder="Enter recipe name">
+        </div>
+
+        <div style="margin-top: 10px;"></div>
+
+        <div class="form-group">
+            <label for="NewrecipeName" class="form-label">New Recipe Name:</label>
+            <input name="new_receipe_name"   type="text" id="recipeName" class="form-control" placeholder="Enter recipe name">
+        </div>
+
+        <div style="margin-top: 10px;"></div>
+
+        <div class="form-group">
+            <label for="recipeDescription" class="form-label">New Recipe description:</label>
+            <input name="new_receipe_description"   type="text" id="new_recipeDescription" class="form-control" placeholder="Enter New Description">
+        </div>
+
+        <div class="centered-btn">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+
+        {% if message %}
+        <div>{{ message }}</div>
+        {% endif %}
+
+        
+    </form>
+</div>
+
+{% endblock  %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block start %}
+    <style>
+        .container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                font-size: 20px;
+            }
+
+            .form-control {
+                font-size: 16px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+            .form-heading {
+                text-align: center;
+            }
+
+            .centered-btn {
+            text-align: center; 
+        }
+    </style>
+
+    <div class="container mt-5">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="form-heading"> Delete Recipe </h1>
+            <div class="form-group">
+                <label for="recipeName" class="form-label">Recipe Name:</label>
+                <input name="receipe_name" required  type="text" id="recipeName" class="form-control" placeholder="Enter recipe name">
+            </div>
+
+            <div class="centered-btn">
+                <button type="submit" class="btn btn-primary">Delete </button>
+            </div>
+
+        {% if receipe_deleted %}
+        <p>The recipe "{{ receipe_name }}" has been deleted successfully.</p>
+        {% else %}
+        <p>No recipe found with the specified name "{{ receipe_name }}".</p>
+        {% endif %}
+        </form>
+
+    </div>
+
+{% endblock  %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block start %}
+
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+
+    <a href="/contact/">
+        contact
+    </a>
+
+    <a href="/about/">
+        about
+    </a>
+
+    <table>
+        <tr>
+          <th>S.NO</th>
+          <th>Name</th>
+          <th>Age</th> 
+          <th>Can Vote</th> 
+        </tr>
+
+        {%for peoples in people%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{peoples.name}}</td>
+          <td>{{peoples.age}}</td>
+          <td>
+                {% if peoples.can_vote %}
+                👍
+                {% else %} 
+                👎  
+                {% endif %}    
+          </td>
+
+        </tr> 
+        {% endfor %}
+      </table>
+    <p> {% if "cocumber" in vegetables %}
+        Yes cocumber is available
+        
+        {%elif "aalo" in vegetables %}
+        han aalo is available   
+
+        {%else%}
+        No its not available
+        {% endif %}
+    </p>
+
+    <p>
+        {%if age in people %}
+        Yes age is present
+
+        {%else%}
+        No age Is not present
+
+        {%endif%}
+
+
+    </p>
+
+{% endblock  %}

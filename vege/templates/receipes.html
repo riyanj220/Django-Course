@@ -1,0 +1,124 @@
+    {% extends 'base.html' %}
+    {% block start %}
+    <style>
+        .container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                font-size: 20px;
+            }
+
+            .form-control {
+                font-size: 16px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+            .form-heading {
+                text-align: center;
+            }
+
+            .centered-btn {
+            text-align: center; 
+        }
+
+        .logout-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    </style>
+
+<div class="logout-button">
+    <a href="/login_account/" class="btn btn-danger">Logout</a>
+</div>
+    <div class="container mt-5">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="form-heading"> Add Recipe </h1>
+            <div class="form-group">
+                <label for="recipeName" class="form-label">Recipe Name:</label>
+                <input name="receipe_name" required  type="text" id="recipeName" class="form-control" placeholder="Enter recipe name">
+            </div>
+
+            <div class="form-group">
+                <label for="recipeDescription"class="form-label">Recipe Description:</label>
+                <textarea id="recipeDescription"  name = "receipe_description" class="form-control" placeholder="Enter recipe description"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="recipeImage" class="form-label">Recipe Image:</label>
+                <input type="file" name = 'receipe_image' id="recipeImage" class="form-control">
+            </div>
+
+            <div class="centered-btn">
+                <button type="submit" class="btn btn-primary">Add </button>
+            </div>
+        </form>
+
+    </div>
+     
+    <br></br>
+
+            <div class="container mt-3">
+                <div class="row justify-content-center">
+                    <div class="text-center" style="display: inline-block; margin-right: 75px;">
+                        <a href="/receipes/view_receipes/" class="btn btn-primary" style="text-decoration: none;"> View Recipes </a>
+                    </div>
+                    <div class="text-center" style="display: inline-block;margin-right: 75px;">
+                        <a href="/receipes/update_receipes" class="btn btn-primary" style="text-decoration: none;" > Update Recipes</a>
+                    </div>
+                    <div class="text-center" style="display: inline-block;">
+                        <a href="/receipes/delete_receipes" class="btn btn-primary" style="text-decoration: none;"> Delete Recipes</a>
+                    </div>  
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
